@@ -1,1 +1,1 @@
-This repository is where I keep my databse exercises.
+This repository is where I keep my database exercises.
