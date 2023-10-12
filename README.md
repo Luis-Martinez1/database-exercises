@@ -1,1 +1,1 @@
-this is an explaination of the repository
+This repository is where I keep my databse exercises.
