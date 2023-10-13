@@ -46,14 +46,16 @@ where last_name like 'e%' or last_name like '%e';
 -- Find all unique last names that end with E, but does not start with E?
 select distinct last_name 
 from employees
-where last_name like '%e'; 
-
+where last_name like '%e'
+and last_name not like 'e%'; 
+-- i forgot to put the not like clause 
 
 
 -- Find all unique last names that start and end with 'E'.
 select distinct last_name 
 from employees
-where last_name like 'e%' and last_name like '%e'; 
+where last_name like 'e%' and last_name like '%e'; -- you can also use Like 'e%e'
+
 
 
 -- Find all current or previous employees hired in the 90s. Enter a comment with the top three employee numbers.
@@ -61,6 +63,7 @@ select *
 from employees
 where hire_date between '1990-01-01' and '1999-12-31';
 -- Answer: Top three employee numbers are "10008", "10011", and "10012". 
+-- or you can use LIKE '199%'
 
 
 -- Find all current or previous employees born on Christmas. Enter a comment with the top three employee numbers.
@@ -74,7 +77,7 @@ where birth_date like '%12-25';
 -- Find all current or previous employees hired in the 90s and born on Christmas. Enter a comment with the top three employee numbers.
 select *
 from employees
-where hire_date between '1990-01-01' and '1999-12-31'
+where hire_date between '1990-01-01' and '1999-12-31' -- you can also use like '199%'
 and birth_date like '%12-25';
 -- Answer: Top three employee numbers are "10261", "10438", and "10681".
 
