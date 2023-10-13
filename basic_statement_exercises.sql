@@ -20,6 +20,7 @@ SELECT name
 FROM albums
 Where artist = 'Pink Floyd';
 
+
 -- What is the year Sgt. Pepper's Lonely Hearts Club Band was released?
 -- Answer: 1967
 Select release_date
@@ -46,6 +47,5 @@ WHERE release_date > 1989 and release_date < 2000;
 SELECT name as low_selling_albums
 FROM albums
 WHERE sales < 20;
-
 
 
