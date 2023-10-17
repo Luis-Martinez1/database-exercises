@@ -46,10 +46,10 @@ GROUP BY last_name;
 
 
 -- 7) Find all employees with first names 'Irena', 'Vidya', or 'Maya'. Use COUNT(*) and GROUP BY to find the number of employees with those names for each gender.
-SELECT gender, count(*)
+SELECT first_name, gender, count(*)
 FROM employees
 WHERE first_name in ('Irena','Vidya','Maya')
-GROUP BY gender;
+GROUP BY gender, first_name;
 
 
 -- 8) Using your query that generates a username for all employees, generate a count of employees with each unique username.
@@ -79,6 +79,26 @@ order by cnt desc;
 
 
 
+-- BONUS
+select count(cnt)
+from(
+SELECT lower(concat(
+					SUBSTR(first_name, 1, 1), 
+					SUBSTR(last_name, 1, 4),
+                    '_',
+                    SUBSTR(birth_date, 6, 2), 
+					SUBSTR(birth_date, 3, 2))) as username, count(*) as cnt
+				
+FROM employees
+GROUP BY username
+HAVING cnt > 1
+order by cnt desc) as cnt;
+-- Asnwer: There are 13,251 duplicates. 
+
+
+
+
+
 
 
 
@@ -101,13 +121,18 @@ FROM dept_emp;
 
 SELECT dept_no, count(*) AS current_employees
 FROM dept_emp
+Where to_date = '9999-01-01'
 GROUP BY dept_no;
+-- current employee is why we use where clause and the 9999-01-01 date.
+
 
 -- Determine how many different salaries each employee has had. This includes both historic and current.
 
 SELECT emp_no, COUNT(DISTINCT salary)
 FROM salaries
 GROUP BY emp_no;
+
+
 
 -- Find the maximum salary for each employee.
 
