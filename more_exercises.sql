@@ -1,6 +1,68 @@
-show databases;
+show databases;	
 use sakila;
 show tables;
+
+-- In the sakila database,
+-- use the actor, film_actor, and film table
+-- to find the first and last name of all actors
+-- in the movie titled 'town ark'
+
+SELECT *
+FROM actor;
+
+select * 		-- joiner table or associative table to link actor to movie
+from film_actor;
+
+select * 
+from film;
+
+
+select first_name, last_name
+from film
+join film_actor
+using (film_id)
+join actor
+using (actor_id)
+where title = "town ark";
+
+
+
+SELECT first_name, last_name, actor_id
+FROM actor
+join film_actor
+using (actor_id)
+join film
+using (film_id)
+WHERE film_id = '900';
+
+
+
+
+
+
+
+-- 1) SELECT statements
+-- a) Select all columns from the actor table.
+
+
+
+-- b) Select only the last_name column from the actor table.
+SELECT last_name
+FROM actor;
+-- c) Select only the film_id, title, and release_year columns from the film table.
+SELECT film_id, title, release_year
+FROM film;
+
+
+
+
+
+
+
+
+
+
+
 
 -- 1) SELECT statements
 -- a) Select all columns from the actor table.
